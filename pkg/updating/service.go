@@ -53,6 +53,7 @@ func (srv *service) UpdateOffice(requestEvent models.Event) error {
 		EventName: models.OfficeEvents_OFFICE_UPDATED.String(),
 		Timestamp: time.Now().UnixNano(),
 		Payload:   marshalEvent,
+		ApiTag:    requestEvent.ApiTag,
 	}
 
 	err = srv.ob.Update(office, updateEvent)

@@ -22,7 +22,6 @@ func NewService(outbox ob.Outbox) Service {
 	return &service{outbox}
 }
 
-//Do something with address and such?
 func (srv *service) CreateOffice(requestEvent models.Event) error {
 
 	event := &models.CreateOffice{}
@@ -52,6 +51,7 @@ func (srv *service) CreateOffice(requestEvent models.Event) error {
 		EventName: models.OfficeEvents_OFFICE_CREATED.String(),
 		Timestamp: time.Now().UnixNano(),
 		Payload:   marshalEvent,
+		ApiTag:    requestEvent.ApiTag,
 	}
 
 	err = srv.outbox.Insert(office, creationEvent)

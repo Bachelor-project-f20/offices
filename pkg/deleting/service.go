@@ -52,6 +52,7 @@ func (srv *service) DeleteOffice(requestEvent models.Event) error {
 		EventName: models.OfficeEvents_OFFICE_DELETED.String(),
 		Timestamp: time.Now().UnixNano(),
 		Payload:   marshalEvent,
+		ApiTag:    requestEvent.ApiTag,
 	}
 
 	err = srv.ob.Delete(office, deletionEvent)
