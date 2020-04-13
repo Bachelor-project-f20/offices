@@ -99,11 +99,7 @@ func (h *handler) handleEvent(event models.Event) {
 		case models.OfficeEvents_DELETE_OFFICE:
 			err = h.deletingService.DeleteOffice(event)
 		default:
-			//This may be horrible practice, but i does allow the tests to pass
-			//If it throws an error, the tests freeze up. During testing it has to handle the outgoing events as well,
-			//because SNS won't let you publish events to topics without subscribers
 			log.Printf("Event of type %v is not handled by this service", eventType)
-			//err = errors.New("Event not of type handled by this service")
 		}
 		if err != nil {
 			h.errorChan <- err
