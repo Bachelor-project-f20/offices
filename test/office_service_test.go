@@ -100,6 +100,10 @@ func test(t *testing.T) {
 		t.Error(testResult.Err)
 	}
 	testingChan <- eventHandler.TestObject{}
+	//Needed to handle latency between the sending and receiving  of the "action performed" events,
+	//e.g. OfficeCreated. In production, there would be another service receiving it, but since the
+	//only subscriber to these in testing, are the services themselves, we have to await receiving that message
+	time.Sleep(1 * time.Second)
 }
 
 func TestCreateRequestHandling(t *testing.T) {
@@ -138,7 +142,6 @@ func TestCreateRequestHandling(t *testing.T) {
 
 	eventEmitter.Emit(creationRequest)
 	test(t)
-	time.Sleep(2 * time.Second)
 }
 
 func TestUpdateRequestHandling(t *testing.T) {
@@ -177,7 +180,6 @@ func TestUpdateRequestHandling(t *testing.T) {
 
 	eventEmitter.Emit(updateRequest)
 	test(t)
-	time.Sleep(2 * time.Second)
 }
 
 func TestDeleteRequestHandling(t *testing.T) {
@@ -216,5 +218,4 @@ func TestDeleteRequestHandling(t *testing.T) {
 
 	eventEmitter.Emit(deletionRequest)
 	test(t)
-	time.Sleep(2 * time.Second)
 }
