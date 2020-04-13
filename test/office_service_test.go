@@ -13,10 +13,6 @@ import (
 	"github.com/Bachelor-project-f20/offices/pkg/updating"
 	"github.com/Bachelor-project-f20/shared/config"
 	models "github.com/Bachelor-project-f20/shared/models"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/sns"
 	"github.com/golang/protobuf/proto"
 )
 
@@ -27,17 +23,8 @@ var creatingService creating.Service
 
 var updatingService updating.Service
 var deletingService deleting.Service
-var svc *sns.SNS
 
 func TestServiceSetup(t *testing.T) {
-	//AnonymousCredentials for the mock SNS instance
-	//SSL disabled, because it's easier when testing
-	//localhost:991 is where the fake SNS container should be running
-	sess := session.Must(session.NewSessionWithOptions(session.Options{
-		Config: aws.Config{Credentials: credentials.AnonymousCredentials, Endpoint: aws.String("http://localhost:9911"), Region: aws.String("us-east-1"), DisableSSL: aws.Bool(true)},
-	}))
-
-	svc = sns.New(sess)
 
 	incomingEvents := []string{
 		models.OfficeEvents_CREATE_OFFICE.String(),
@@ -57,7 +44,6 @@ func TestServiceSetup(t *testing.T) {
 			UseEmitter:        true,
 			UseListener:       true,
 			MessageBrokerType: etg.SNS,
-			SNSClient:         svc,
 			Events:            incomingAndOutgoingEvents,
 			UseOutbox:         true,
 			OutboxModels:      []interface{}{models.Office{}, models.Address{}},
