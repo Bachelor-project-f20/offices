@@ -2,8 +2,8 @@ github.com/Bachelor-project-f20/eventToGo v0.2.4 h1:eSr0//TP4YHfSke4jf2moTjvliiI
 github.com/Bachelor-project-f20/eventToGo v0.2.4/go.mod h1:4KiRntKxouSCYWz/5PsOwvuYtMS68ax3XVeK+h2DCag=
 github.com/Bachelor-project-f20/go-outbox v0.2.2 h1:0Z0WCqfUydv0JHN6Tg0yjEQ+y3JmWOCrQ9JFkcv3c38=
 github.com/Bachelor-project-f20/go-outbox v0.2.2/go.mod h1:1unc5ADjpmoJzvf6IbBFCjPM+EruAo+Y+yfqfc3no0k=
-github.com/Bachelor-project-f20/shared v0.1.8 h1:kNIv/OB3o1qNLThSs63JbZ5hhS5cwGZHwAL0VFQ3B1o=
-github.com/Bachelor-project-f20/shared v0.1.8/go.mod h1:lvtsUm9VlnH6yjugASDVo8jUpmKBEHvJBQHmuLxlQCg=
+github.com/Bachelor-project-f20/shared v0.2.0 h1:kNIv/OB3o1qNLThSs63JbZ5hhS5cwGZHwAL0VFQ3B1o=
+github.com/Bachelor-project-f20/shared v0.2.0/go.mod h1:lvtsUm9VlnH6yjugASDVo8jUpmKBEHvJBQHmuLxlQCg=
 github.com/denisenkom/go-mssqldb v0.0.0-20191124224453-732737034ffd/go.mod h1:xbL0rPBG9cCiLr28tMa8zpbdarY27NDyej4t/EjAShU=
 github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5/go.mod h1:a2zkGnVExMxdzMo3M0Hi/3sEU+cWnZpSni0O6/Yb/P0=
 github.com/go-sql-driver/mysql v1.4.1 h1:g24URVg0OFbNUTx9qqY1IRZ9D9z3iPyi5zKhQZpNwpA=
